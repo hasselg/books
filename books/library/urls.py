@@ -6,6 +6,7 @@ info_dict = {
 }
 
 urlpatterns = patterns('',
-    (r'^$', 'django.views.generic.list_detail.object_list', info_dict),
+    (r'^$', 'books.library.views.homepage'),
+    (r'^list/$', 'django.views.generic.list_detail.object_list', info_dict),
 )
 
