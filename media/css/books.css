@@ -1,1 +1,11 @@
-td { font-weight: bold }
+#header {
+    background-color: green;
+    border: 1px solid black;
+    color: white;
+    padding: .25em;
+}
+
+#content {
+    border: 1px solid black;
+}
+
