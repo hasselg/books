@@ -21,5 +21,8 @@ def main():
     cherrypy.tree.graft(django.core.handlers.wsgi.WSGIHandler(), '/books')
 
 
-    cherrypy.engine.start()
-    
+    try:
+        cherrypy.engine.start()
+        cherrypy.engine.block()
+    except KeyboardInterrupt:
+        cherrypy.engine.stop()
