@@ -1,15 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+{% extends "library/base.html" %}
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link href="../media/css/books.css" rel="stylesheet" type="text/css" />
-    <title>Books</title>
-</head>
+{% block title %}Welcome to Books!{% endblock %}
 
-<body>
-{% spaceless %}
+{% block content %}
 {% if object_list %}
 <table border="1">
 <tr>
@@ -38,6 +31,4 @@
 {% endfor %}
 </table>
 {% endif %}
-{% endspaceless %}
-</body>
-</html>
+{% endblock %}
