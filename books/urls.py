@@ -5,6 +5,6 @@ from django.conf.urls.defaults import *
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^library$', include('books.library.urls')),
+    (r'^library/', include('books.library.urls')),
 )
 
