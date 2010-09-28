@@ -2,5 +2,14 @@
 {% block title %}Books - Home{% endblock %}
 {% block content %}
 <h1>Welcome to Books!</h1>
+<p>Books is the application that lets you keep track of the books you have read. It allows you to search by author, title, rating, and the year that you finished the book.</p>
+
+{% if last_five_books %}
+<p>Latest {{ last_five_books|length }} book{{ last_five_books|length|pluralize }} you've read:
+{% for book in last_five_books %}
+<a href="detail/{{ book.id }}/">{{ book.title }} ({{book.year_read.year}})</a>{% if not forloop.last %},{% endif %} 
+{% endfor %}
+</p>
+{% endif %}
 {% endblock %}
 
