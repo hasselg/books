@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
 class Author(models.Model):
@@ -29,4 +30,12 @@ class Book(models.Model):
         sb = sb + ", year: " + str(self.year_read.year)
 
         return sb
+
+class BookModelForm(ModelForm):
+    class Meta:
+        model = Book
+
+class AuthorModelForm(ModelForm):
+    class Meta:
+        model = Author
 
