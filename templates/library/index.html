@@ -7,7 +7,7 @@
 {% if last_five_books %}
 <p>Latest {{ last_five_books|length }} book{{ last_five_books|length|pluralize }} you've read:
 {% for book in last_five_books %}
-<a href="detail/{{ book.id }}/">{{ book.title }} ({{book.year_read.year}})</a>{% if not forloop.last %},{% endif %} 
+<a href="edit/{{ book.id }}/">{{ book.title }} ({{book.year_read.year}})</a>{% if not forloop.last %},{% endif %} 
 {% endfor %}
 </p>
 {% endif %}
