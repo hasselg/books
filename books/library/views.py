@@ -1,4 +1,6 @@
 from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
@@ -15,14 +17,18 @@ def homepage(request):
 @csrf_protect
 def edit_book(request, book_id=None):
     if book_id is not None:
-	book = Book.objects.get(pk=book_id)
+        try:
+	    book = Book.objects.get(pk=book_id)
+        except Book.DoesNotExist:
+            book = None
     else:
         book = None
 
     if request.method == 'POST':
         form = BookModelForm(request.POST, instance=book)
 	if form.is_valid():
-            form.save()
+            book = form.save()
+            return HttpResponseRedirect(reverse('books.library.views.edit_book', args=(book.id,)))
     else:
         form = BookModelForm(instance=book)
 
