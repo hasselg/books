@@ -22,6 +22,7 @@ def main():
 
 
     try:
+        cherrypy.server.socket_host = '0.0.0.0'
         cherrypy.engine.start()
         cherrypy.engine.block()
     except KeyboardInterrupt:
