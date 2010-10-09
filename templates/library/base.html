@@ -5,7 +5,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link href="/media/css/books.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/media/scripts/jquery-1.4.2.js"></script>
     <title>{% block title %}{% endblock %}</title>
+    {% block extraheaditems %}{% endblock %}
 </head>
 
 <body>
@@ -15,7 +17,7 @@
 </div>
 <div id="footer">
 {% block footer %}
-<a href="/books/library/">home</a> <a href="/books/library/create/">add book</a>
+<a href="/books/library/">home</a> <a href="/books/library/create/">add a book</a> <a href="/books/library/search/">find a book</a> <a href="/books/library/list/">list all books</a>
 {% endblock %}</div>
 
 </body>

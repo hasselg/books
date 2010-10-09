@@ -1,20 +1,32 @@
 {% extends "library/base.html" %}
 
 {% block title %}Welcome to Books!{% endblock %}
-
+{% block extraheaditems %}
+<link href="/media/tablesorter/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $("#booksTable").tablesorter({widgets: ['zebra']});
+});
+</script>
+{% endblock %}
+ 
 {% block content %}
 {% if object_list %}
-<table border="1">
+<table id="booksTable" class="tablesorter">
+<thead>
 <tr>
     <th>Title</th>
     <th>Author(s)</th>
     <th>Date</th>
     <th>Rating</th>
 </tr>
-
+</thead>
+<tbody>
 {% for object in object_list %}
 <tr>
-    <td>{{ object.title }}</td>
+    <td><a href="/books/library/edit/{{ object.id }}/">{{ object.title }}</a></td>
     <td>
     {% for auth in object.author.all %}
         {% if forloop.first %}
@@ -29,6 +41,9 @@
     <td>{{ object.rating }}</td>
 </tr>
 {% endfor %}
+</tbody>
 </table>
+{% else %}
+<p>No books exist in the database. You may wish to <a href="/books/library/create/">add a book</a>.</p>
 {% endif %}
 {% endblock %}
