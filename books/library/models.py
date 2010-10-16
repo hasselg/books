@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from django.forms import ModelForm
 
 # Create your models here.
@@ -20,14 +21,14 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ManyToManyField(Author)
     rating = models.IntegerField()
-    year_read = models.DateField()
+    year_read = models.IntegerField()
 
     def __unicode__(self):
         sb = "title: " + self.title
         for author in self.author.all():
             sb = sb + ", author: " + str(author)
         sb = sb + ", rating: " + str(self.rating)
-        sb = sb + ", year: " + str(self.year_read.year)
+        sb = sb + ", year: " + str(self.year_read)
 
         return sb
 
@@ -38,4 +39,17 @@ class BookModelForm(ModelForm):
 class AuthorModelForm(ModelForm):
     class Meta:
         model = Author
+
+class BookForm(forms.Form):
+    title = forms.CharField()
+    
+    # Author field here:
+
+    rating = forms.IntegerField()
+    year_read = forms.IntegerField()
+
+class AuthorForm(forms.Form):
+    first_name = forms.CharField()
+    middle_name = forms.CharField()
+    last_name = forms.CharField()
 

@@ -26,7 +26,7 @@ $(document).ready(function()
 <tbody>
 {% for object in object_list %}
 <tr>
-    <td><a href="/books/library/edit/{{ object.id }}/">{{ object.title }}</a></td>
+    <td><a href="/books/library/edit_book/{{ object.id }}/">{{ object.title }}</a></td>
     <td>
     {% for auth in object.author.all %}
         {% if forloop.first %}
@@ -37,7 +37,7 @@ $(document).ready(function()
         {% endif %}
     {% endfor %}
     </td>
-    <td>{{ object.year_read.year }}</td>
+    <td>{{ object.year_read }}</td>
     <td>{{ object.rating }}</td>
 </tr>
 {% endfor %}

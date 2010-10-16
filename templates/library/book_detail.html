@@ -1,0 +1,54 @@
+{% extends "library/base.html" %}
+{% block title %}Books - Details{% endblock %}
+
+{% block extraheaditems %}
+<link href="/media/jquery-ui/jquery-ui-1.8.5.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.5.min.js"></script>
+<script type="text/javascript" src="/media/scripts/jquery.form.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#dialog").dialog({ autoOpen: false , modal: true});
+
+//    $("#addAuthor").ajaxForm(function (data) { alert(data); });
+
+    $("#addAuthor").ajaxForm({
+        url: '/books/library/create_author/',
+        dataType: 'json',
+        success: function (data) {
+            alert("author has PK of " + data.pk);
+            var new_author = "<option value=\"" + data.pk + "\">" + data.author + "</option>";
+            console.log(new_author);
+            $("#id_author").append(new_author);
+            $("#dialog").dialog("close");
+        },
+        resetForm: true
+    });
+
+    console.log("test");
+});
+
+function add_author() {
+  $("#dialog").dialog("open");
+}
+
+</script>
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+{{ book_form.as_p }}
+<a href="#" onclick="javascript:add_author()">add a new author</a>
+<br />
+<input type="submit" value="Save changes" />
+</form>
+
+
+<div id="dialog" title="Add a New Author">
+    <form id="addAuthor" method="post">
+    {{ author_form.as_p }}
+    <input type="submit" value="add" />
+</div>
+{% endblock %}
+
