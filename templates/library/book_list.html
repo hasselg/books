@@ -1,6 +1,6 @@
 {% extends "library/base.html" %}
 
-{% block title %}Welcome to Books!{% endblock %}
+{% block title %}Books - Book list{% endblock %}
 {% block extraheaditems %}
 <link href="/media/tablesorter/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>
@@ -30,10 +30,10 @@ $(document).ready(function()
     <td>
     {% for auth in object.author.all %}
         {% if forloop.first %}
-        {{ auth }}
+        <a href="/books/library/edit_author/{{ auth.id }}/">{{ auth }}</a>
         {% else %}
         <br />
-        {{ auth }}
+        <a href="/books/library/edit_author/{{ auth.id }}/">{{ auth }}</a>
         {% endif %}
     {% endfor %}
     </td>
