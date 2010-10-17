@@ -1,7 +1,46 @@
+{% extends "library/base.html" %}
+
+{% block title %}Books - Author Details{% endblock %}
+{% block extraheaditems %}
+<link href="/media/tablesorter/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#booksTable").tablesorter({widgets: ['zebra']});
+});
+</script>
+{% endblock %}
+
+{% block content %}
 <form action="" method="post">
 {% csrf_token %}
 {{ form.as_p }}
 <br />
 <input type="submit" value="Save changes" />
 </form>
+
+{% if books %}
+<h2>The following books are associated with this author:</h2>
+<table id="booksTable" class="tablesorter">
+<thead>
+<tr>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Rating</th>
+</tr>
+</thead>
+<tbody>
+{% for book in books %}
+<tr>
+    <td><a href="/books/library/edit_book/{{ book.id }}/">{{ book.title }}</a></td>
+    <td>{{ book.year_read }}</td>
+    <td>{{ book.rating }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No books associated with author.</p>
+{% endif %}
+{% endblock %}
 
