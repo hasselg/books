@@ -40,21 +40,9 @@ def edit_book(request, book_id=None):
 def add_author_ajax(request):
     if request.method == 'POST':
         if request.is_ajax():
-
-            print "deserializing the form"
-
             form = AuthorModelForm(request.POST)
-
-            print "from has been deserialized"
-
             if form.is_valid():
-                
-                print "form is valid"
-                
                 author = form.save()
-
-                print "new author (pk='" + str(author.id) + "'): " + str(author)
-               
                 message = simplejson.dumps({'pk': author.id, 'author': str(author)}, ensure_ascii=False)
 
                 return HttpResponse(message, mimetype='application/javascript');
@@ -83,6 +71,7 @@ def edit_author(request, author_id=None):
             return HttpResponseRedirect(reverse('books.library.views.edit_author', args=(author.id,)))
     else:
         form = AuthorModelForm(instance=author)
+        books = author.book_set.all()
 
-    return render_to_response('library/author_detail.html', {'form': form}, context_instance=RequestContext(request))
+    return render_to_response('library/author_detail.html', {'form': form, 'books': books}, context_instance=RequestContext(request))
 
