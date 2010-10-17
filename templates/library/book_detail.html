@@ -43,6 +43,7 @@ function add_author() {
 
 <div id="dialog" title="Add a New Author">
     <form id="addAuthor" method="post">
+    {% csrf_token %}
     {{ author_form.as_p }}
     <input type="submit" value="add" />
 </div>
