@@ -1,0 +1,48 @@
+{% extends "library/base.html" %}
+
+{% block title %}Books - Book list{% endblock %}
+{% block extraheaditems %}
+<link href="/media/tablesorter/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $("#authorsTable").tablesorter({widgets: ['zebra']});
+});
+</script>
+{% endblock %}
+ 
+{% block content %}
+{% if object_list %}
+<table id="authorsTable" class="tablesorter">
+<thead>
+<tr>
+    <th>First</th>
+    <th>Middle</th>
+    <th>Last</th>
+    <th>Books</th>
+</tr>
+</thead>
+<tbody>
+{% for object in object_list %}
+<tr>
+    <td>{{ object.first_name }}</td>
+    <td>{{ object.middle_name }}</td>
+    <td>{{ object.last_name }}</td>
+    <td>
+    {% for book in object.book_set.all %}
+        {% if not forloop.first %}
+        <br />
+        {% endif %}
+        <a href="/books/library/edit_book/{{ book.id }}/">{{ book.title }}</a>
+    {% endfor %}
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No authors exist in the database. You may wish to 
+<a href="/books/library/create_author/">add an author</a>.</p>
+{% endif %}
+{% endblock %}
