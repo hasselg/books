@@ -5,7 +5,7 @@ from django.forms import ModelForm
 # Create your models here.
 class Author(models.Model):
     first_name = models.CharField(max_length=200)
-    middle_name = models.CharField(max_length=200)
+    middle_name = models.CharField(max_length=200,blank=True)
     last_name = models.CharField(max_length=200)
 
     def __unicode__(self):
