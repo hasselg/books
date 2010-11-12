@@ -45,7 +45,7 @@ def add_author_ajax(request):
                 author = form.save()
                 message = simplejson.dumps({'pk': author.id, 'author': str(author)}, ensure_ascii=False)
 
-                return HttpResponse(message, mimetype='application/javascript');
+                return HttpResponse(message, mimetype='application/javascript')
             else:
                 print "form is not valid"
                 print form.errors
@@ -59,10 +59,13 @@ def edit_author(request, author_id=None):
     if author_id is not None:
         try:
             author = Author.objects.get(pk=author_id)
+            books = author.book_set.all()
         except Author.DoesNotExist:
             author = None
+            books = None
     else:
         author = None
+        books = None
 
     if request.method == 'POST':
         form = AuthorModelForm(request.POST, instance=author)
@@ -71,7 +74,6 @@ def edit_author(request, author_id=None):
             return HttpResponseRedirect(reverse('books.library.views.edit_author', args=(author.id,)))
     else:
         form = AuthorModelForm(instance=author)
-        books = author.book_set.all()
 
     return render_to_response('library/author_detail.html', {'form': form, 'books': books}, context_instance=RequestContext(request))
 
