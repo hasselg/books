@@ -1,6 +1,7 @@
 from django.db import models
 from django import forms
 from django.forms import ModelForm
+from django.forms import ModelMultipleChoiceField
 
 # Create your models here.
 class Author(models.Model):
@@ -33,23 +34,12 @@ class Book(models.Model):
         return sb
 
 class BookModelForm(ModelForm):
+    author = ModelMultipleChoiceField(Author.objects.all())
+    
     class Meta:
         model = Book
 
 class AuthorModelForm(ModelForm):
     class Meta:
         model = Author
-
-class BookForm(forms.Form):
-    title = forms.CharField()
-    
-    # Author field here:
-
-    rating = forms.IntegerField()
-    year_read = forms.IntegerField()
-
-class AuthorForm(forms.Form):
-    first_name = forms.CharField()
-    middle_name = forms.CharField()
-    last_name = forms.CharField()
 
