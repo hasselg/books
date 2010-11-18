@@ -3,13 +3,19 @@
 
 {% block extraheaditems %}
 <link href="/media/jquery-ui/jquery-ui-1.8.5.css" rel="stylesheet" type="text/css" />
+<link href="/media/selectlist/selectlist.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="/media/scripts/jquery-ui-1.8.5.min.js"></script>
 <script type="text/javascript" src="/media/scripts/jquery.form.js"></script>
+<script type="text/javascript" src="/media/selectlist/jquery.selectlist.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
     // Setup our dialog
     $("#dialog").dialog({ autoOpen: false , modal: true});
+    
+    // Setup our fancy author select widget
+    $("select#id_author").selectList({ sort: true });
 
     // Wire up our add author form
     $("#addAuthor").ajaxForm({
