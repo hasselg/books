@@ -22,8 +22,9 @@ $(document).ready(function() {
         url: '/books/library/create_author_ajax/',
         dataType: 'json',
         success: function (data) {
-            var new_author = "<option value=\"" + data.pk + "\">" + data.author + "</option>";
+            var new_author = "<option value=\"" + data.pk + "\" selected=\"selected\">" + data.author + "</option>";
             $("#id_author").append(new_author);
+            $("#id_author").change();
             $("#dialog").dialog("close");
         },
         resetForm: true
