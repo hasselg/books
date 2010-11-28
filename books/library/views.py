@@ -37,6 +37,7 @@ def edit_book(request, book_id=None):
 
     return render_to_response('library/book_detail.html', {'book_form': book_form, 'author_form': author_form}, context_instance=RequestContext(request))
 
+@csrf_protect
 def add_author_ajax(request):
     if request.method == 'POST':
         if request.is_ajax():
