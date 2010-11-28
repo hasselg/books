@@ -15,11 +15,11 @@ $(document).ready(function() {
     $("#dialog").dialog({ autoOpen: false , modal: true});
     
     // Setup our fancy author select widget
-    $("select#id_author").selectList({ sort: true });
+    $("#id_author").selectList({ sort: true });
 
     // Wire up our add author form
     $("#addAuthor").ajaxForm({
-        url: '/books/library/create_author/',
+        url: '/books/library/create_author_ajax/',
         dataType: 'json',
         success: function (data) {
             var new_author = "<option value=\"" + data.pk + "\">" + data.author + "</option>";
