@@ -21,8 +21,13 @@ class Server(object):
         })
         cherrypy.tree.graft(django.core.handlers.wsgi.WSGIHandler(), '/books')
 
-    def start(self):
+    def start(self, block=False):
         cherrypy.engine.start()
+        if block:
+            try:
+                cherrypy.engine.block()
+            except KeyboardInterrupt:
+                cherrypy.engine.stop()
 
     def stop(self):
         cherrypy.engine.exit()
