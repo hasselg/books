@@ -4,4 +4,6 @@ Some information describing *books*.
 
 Dependencies
 ============
-List of dependencies required for running books.
+The following dependencies are required for running *books*:
+* CherryPy (http://www.cherrypy.org)
+* Django (http://www.djangoproject.com)
