@@ -10,8 +10,9 @@ class Root(object):
 
 class Server(object):
     def __init__(self):
+        cherrypy.log.screen = False
         media_root = media_root = os.path.join(os.getcwd(), 'media')
-        print "media root: %s" % (media_root)
+        # print "media root: %s" % (media_root)
         
         cherrypy.tree.mount(Root(), '/', config={
             '/media': {
