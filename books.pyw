@@ -4,7 +4,7 @@ import sys
 
 import cherry_server as books_server
 
-from PyQt4 import QtCore, QtGui
+from PySide import QtCore, QtGui
 from books_viewer import Ui_book_viewer_form
 
 try:
@@ -14,7 +14,7 @@ except:
 
 class StartQT4(QtGui.QMainWindow):
     def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QtGui.QMainWindow.__init__(self, parent)
         self.ui = Ui_book_viewer_form()
         self.ui.setupUi(self)
 
