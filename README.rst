@@ -8,7 +8,7 @@ The following dependencies are required for running *books*:
 
 * CherryPy (http://www.cherrypy.org)
 * Django (http://www.djangoproject.com)
-* PyQt4 (http://www.riverbankcomputing.co.uk/software/pyqt/intro) (required for Clothed Mode)
+* PySide (http://www.pyside.org) (required for Clothed Mode)
 
 If your Python installation cannot import the respective modules, then *books* will not be able to run correctly.
 
