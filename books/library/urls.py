@@ -18,6 +18,6 @@ urlpatterns = patterns('',
     (r'^create_author_ajax/$',  'books.library.views.add_author_ajax'),
     (r'^create_author/$',       'books.library.views.edit_author'),
     (r'^edit_author/(\d+)/$',   'books.library.views.edit_author'),
-    (r'^list_authors/$',          'django.views.generic.list_detail.object_list', authors_dict),
+    (r'^list_authors/$',        'django.views.generic.list_detail.object_list', authors_dict),
 )
 
