@@ -34,7 +34,7 @@ class Book(models.Model):
         return sb
 
 class BookModelForm(ModelForm):
-    author = ModelMultipleChoiceField(Author.objects.all())
+    author = ModelMultipleChoiceField(Author.objects.order_by('first_name', 'last_name'))
     
     class Meta:
         model = Book
