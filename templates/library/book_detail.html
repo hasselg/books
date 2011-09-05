@@ -5,18 +5,18 @@
 <link href="/media/jquery.ui/jquery.ui/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="/media/jquery.selectlist/jquery.selectlist/selectlist.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="/media/scripts/jquery.ui.js"></script>
-<script type="text/javascript" src="/media/scripts/jquery.form.js"></script>
-<script type="text/javascript" src="/media/scripts/jquery.selectlist.js"></script>
+<script src="/media/scripts/jquery.ui.js"></script>
+<script src="/media/scripts/jquery.form.js"></script>
+<script src="/media/scripts/jquery.selectlist.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
-    // Setup our dialog
-    $("#dialog").dialog({ autoOpen: false , modal: true});
-    
+$(document).ready(function () {
     // Setup our fancy author select widget
-    $("#id_author").selectList();
+    $("select#id_author").selectList();
 
+    // Setup our dialog
+    $("#dialog").dialog({ autoOpen: false, modal: true});
+    
     // Wire up our add author form
     $("#addAuthor").ajaxForm({
         url: '/books/library/create_author_ajax/',
