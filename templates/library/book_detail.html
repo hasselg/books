@@ -2,17 +2,20 @@
 {% block title %}Books - Details{% endblock %}
 
 {% block extraheaditems %}
-<link href="/media/jquery.ui/jquery.ui/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="/media/jquery.selectlist/jquery.selectlist/selectlist.css" rel="stylesheet" type="text/css" />
+<link href="/media/css/jquery.ui/jquery.ui/jquery-ui.css" rel="stylesheet" type="text/css" />
+<!-- <link href="/media/css/jquery.selectlist/jquery.selectlist/selectlist.css" rel="stylesheet" type="text/css" /> -->
+<link href="/media/css/chosen.jquery/chosen.jquery/chosen.css" rel="stylesheet" type="text/css" />
 
 <script src="/media/scripts/jquery.ui.js"></script>
 <script src="/media/scripts/jquery.form.js"></script>
-<script src="/media/scripts/jquery.selectlist.js"></script>
+<!-- <script src="/media/scripts/jquery.selectlist.js"></script> -->
+<script src="/media/scripts/chosen.jquery.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function () {
     // Setup our fancy author select widget
-    $("select#id_author").selectList();
+    // $("select#id_author").selectList();
+    $("select#id_author").chosen({no_results_text: "No results matched"});
 
     // Setup our dialog
     $("#dialog").dialog({ autoOpen: false, modal: true});
@@ -26,6 +29,7 @@ $(document).ready(function () {
             $("#id_author").append(new_author);
             $("#id_author").change();
             $("#dialog").dialog("close");
+            $("select#id_author").trigger("liszt:updated");
         },
         resetForm: true
     });
