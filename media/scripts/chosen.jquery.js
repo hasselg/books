@@ -1,1 +1,1 @@
-chosen.jquery-0.9.5.min.js
+chosen.jquery-0.9.8.min.js
