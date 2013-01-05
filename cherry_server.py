@@ -14,7 +14,7 @@ class Server(object):
         media_root = media_root = os.path.join(os.getcwd(), 'media')
         # print "media root: %s" % (media_root)
         
-        cherrypy.tree.mount(Root(), '/', config={
+        cherrypy.tree.mount(Root(), '', config={
             '/media': {
                 'tools.staticdir.on': True,
                 'tools.staticdir.dir': media_root,
