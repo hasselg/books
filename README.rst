@@ -6,8 +6,8 @@ Dependencies
 ============
 The following dependencies are required for running *books*:
 
-* CherryPy (http://www.cherrypy.org)
-* Django (http://www.djangoproject.com)
+* CherryPy (http://www.cherrypy.org) (tested on v3.2.4)
+* Django (http://www.djangoproject.com) (tested on v1.5.1)
 
 If your Python installation cannot import the respective modules, then *books* will not be able to run correctly.
 
