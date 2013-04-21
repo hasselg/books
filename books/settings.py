@@ -53,7 +53,7 @@ MEDIA_ROOT = ''
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 # MEDIA_URL = ''
-MEDIA_URL = 'http://localhost:8080/media'
+MEDIA_URL = 'http://localhost:8080/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
